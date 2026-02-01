@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Babe 💜 | Will You Be My Valentine?</title>
+  <style>
+    :root{
+      /* Purple palette */
+      --bg1:#f3e8ff;      /* lavender mist */
+      --bg2:#c4b5fd;      /* soft violet */
+      --bg3:#8b5cf6;      /* purple */
+      --bg4:#6d28d9;      /* deep purple */
+      --card: rgba(255,255,255,.72);
+      --text:#1f1633;
+      --accent:#a855f7;   /* bright purple */
+      --accent2:#7c3aed;  /* deeper */
+      --shadow: 0 22px 70px rgba(17, 11, 33, .22);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 15% 18%, #ffffff 0%, var(--bg1) 28%, transparent 55%),
+        radial-gradient(circle at 90% 25%, rgba(255,255,255,.65) 0%, var(--bg2) 30%, transparent 58%),
+        radial-gradient(circle at 40% 100%, rgba(168,85,247,.22) 0%, transparent 55%),
+        linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 55%, var(--bg4) 110%);
+      overflow:hidden;
+    }
+
+    /* floating hearts background */
+    .hearts span{
+      position:absolute;
+      bottom:-40px;
+      font-size: 18px;
+      animation: floatUp linear infinite;
+      opacity: .85;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
+      user-select:none;
+      pointer-events:none;
+    }
+    @keyframes floatUp{
+      from{ transform: translateY(0) translateX(0) rotate(0deg); }
+      to{ transform: translateY(-120vh) translateX(40px) rotate(360deg); }
+    }
+
+    /* sparkly aura */
+    .aura{
+      position:absolute;
+      inset:-80px;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(255,255,255,.65) 0%, transparent 38%),
+        radial-gradient(circle at 80% 22%, rgba(255,255,255,.35) 0%, transparent 42%),
+        radial-gradient(circle at 40% 95%, rgba(168,85,247,.25) 0%, transparent 55%),
+        radial-gradient(circle at 70% 80%, rgba(124,58,237,.18) 0%, transparent 60%);
+      pointer-events:none;
+    }
+
+    .card{
+      width:min(940px, 92vw);
+      background:var(--card);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 28px;
+      padding: clamp(18px, 4vw, 34px);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .top{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      margin-bottom: 6px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(168,85,247,.14);
+      border: 1px solid rgba(124,58,237,.22);
+      font-weight:750;
+    }
+    .badge .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 8px 18px rgba(124,58,237,.38);
+    }
+
+    h1{
+      margin: 12px 0 8px;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height:1.05;
+      letter-spacing:-0.02em;
+    }
+
+    .subtitle{
+      font-size: clamp(15px, 2vw, 18px);
+      opacity:.9;
+      max-width: 62ch;
+      margin: 0 0 18px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 22px;
+      margin-top: 10px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(255,255,255,.75);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 12px 34px rgba(15, 10, 30, .08);
+    }
+
+    .panel h3{
+      margin:0 0 10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+
+    .rose{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(124,58,237,.10);
+      border: 1px solid rgba(124,58,237,.18);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing:.01em;
+    }
+
+    .love-note{
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .mini{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .chip{
+      padding:10px 12px;
+      border-radius: 999px;
+      background: rgba(168,85,247,.12);
+      border: 1px solid rgba(124,58,237,.18);
+      font-weight:800;
+      font-size: 13px;
+    }
+
+    .big-question{
+      text-align:center;
+      position:relative;
+    }
+
+    .heart{
+      width: 86px;
+      height: 86px;
+      margin: 6px auto 10px;
+      position: relative;
+      transform: rotate(-45deg);
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 18px;
+      box-shadow: 0 18px 38px rgba(124,58,237,.35);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    .heart:before, .heart:after{
+      content:"";
+      position:absolute;
+      width: 86px;
+      height: 86px;
+      background: inherit;
+      border-radius: 50%;
+    }
+    .heart:before{ top:-43px; left:0; }
+    .heart:after{ left:43px; top:0; }
+    @keyframes pulse{
+      0%,100%{ transform: rotate(-45deg) scale(1); }
+      50%{ transform: rotate(-45deg) scale(1.06); }
+    }
+
+    .big-question h2{
+      margin: 6px 0 10px;
+      font-size: clamp(24px, 3.2vw, 36px);
+    }
+
+    .buttons{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+
+    button{
+      border:none;
+      cursor:pointer;
+      padding: 14px 20px;
+      border-radius: 16px;
+      font-weight: 900;
+      font-size: 16px;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    .yes{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color:white;
+      box-shadow: 0 16px 34px rgba(124,58,237,.38);
+    }
+    .yes:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 22px 42px rgba(124,58,237,.48);
+    }
+
+    .no{
+      background: rgba(0,0,0,.06);
+      color: #2a2140;
+    }
+    .no:hover{ transform: translateY(-2px); }
+
+    .result{
+      margin-top: 14px;
+      font-size: 16px;
+      font-weight: 900;
+      min-height: 26px;
+      color: rgba(31,22,51,.95);
+    }
+
+    .footer{
+      margin-top: 18px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+      opacity:.8;
+      font-size: 13px;
+    }
+
+    /* modal */
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background: rgba(10, 6, 20, .42);
+      padding: 18px;
+      z-index:10;
+    }
+    .modal.open{ display:flex; }
+    .modal-card{
+      width:min(580px, 92vw);
+      background:white;
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.30);
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .modal-card:before{
+      content:"";
+      position:absolute;
+      inset:-60px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(168,85,247,.25) 0%, transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(124,58,237,.18) 0%, transparent 45%),
+        radial-gradient(circle at 50% 110%, rgba(168,85,247,.22) 0%, transparent 55%);
+      pointer-events:none;
+    }
+    .modal-card h3{
+      margin: 6px 0 6px;
+      font-size: 28px;
+      position:relative;
+    }
+    .modal-card p{
+      margin: 0 0 14px;
+      line-height:1.6;
+      opacity:.92;
+      position:relative;
+      font-weight: 650;
+    }
+    .close{
+      background: rgba(0,0,0,.06);
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 900;
+      position:relative;
+    }
+
+    /* small link-style note */
+    .tiny{
+      margin-top: 12px;
+      font-size: 13px;
+      opacity:.85;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts" aria-hidden="true"></div>
+
+  <div class="card">
+    <div class="aura"></div>
+
+    <div class="top">
+      <div class="badge"><span class="dot"></span> Purple Valentine 💜</div>
+      <div class="badge">🌹 For Babe</div>
+    </div>
+
+    <h1>Hey, <span id="herName">Babe</span> 💜</h1>
+    <p class="subtitle">
+      I made a cute little website for you… because you’re my favorite person and I like doing sweet things for you.
+    </p>
+
+    <div class="grid">
+      <div class="panel">
+        <h3>
+          <span>A little note for you ✨</span>
+          <span class="rose">🌹 a rose for you</span>
+        </h3>
+
+        <p class="love-note" id="note"></p>
+
+        <div class="mini">
+          <div class="chip">💜 You’re my peace</div>
+          <div class="chip">🌹 My favorite feeling</div>
+          <div class="chip">🍫 Our cute date</div>
+          <div class="chip">📸 More memories</div>
+        </div>
+
+        <div class="tiny">
+          (I picked purple because it feels like you and yours favorite — soft, pretty, and a little magical.)
+        </div>
+      </div>
+
+      <div class="panel big-question">
+        <div class="heart" aria-hidden="true"></div>
+        <h2>Will you be my Valentine, Babe?</h2>
+
+        <div class="buttons">
+          <button class="yes" id="yesBtn">Yes babe 😘</button>
+          <button class="no" id="noBtn">No 😅</button>
+        </div>
+
+        <div class="result" id="result"></div>
+
+        <div class="tiny">(P.S. The “No” button is shy… don’t be mean to it 😄)</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>Made with 💜 by <b id="fromName">Me</b></div>
+      <div id="dateLine"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <div style="font-size:48px; position:relative;">🎉💜🌹💜🎉</div>
+      <h3>YAY BABE!!</h3>
+      <p id="modalText"></p>
+      <button class="close" id="closeBtn">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // =========================
+    // CONFIG (EDIT THIS PART)
+    // =========================
+    const config = {
+      herName: "Babe",
+      fromName: "Sweet Babe",
+      note: `Babe… I just want you to know:
+
+You make my days sweeter, my mood better, and my life a lot more fun.
+I love the way you talk, the way you laugh, and the way you exist so effortlessly.
+
+So… here’s a rose for you 🌹
+and a question I hope you’ll say yes to…
+
+Happy Valentine’s Day, Babe 💜`,
+      yesMessage: "Okay then… it’s official 😌💜 You’re my Valentine, Babe. Date soon? 🌹",
+      modalText: "You just made my whole day 😭💜 Now come here… I’m stealing a kiss 😘"
+    };
+
+    // set text
+    document.getElementById("herName").textContent = config.herName;
+    document.getElementById("fromName").textContent = config.fromName;
+    document.getElementById("note").textContent = config.note;
+    document.getElementById("modalText").textContent = config.modalText;
+
+    // date line
+    const d = new Date();
+    document.getElementById("dateLine").textContent =
+      d.toLocaleDateString(undefined, { weekday:"long", year:"numeric", month:"long", day:"numeric" });
+
+    // floating hearts creation
+    const hearts = document.querySelector(".hearts");
+    const heartChars = ["💜","💜","💜","💕","💟","💞","🌹"];
+    for(let i=0;i<28;i++){
+      const s=document.createElement("span");
+      s.textContent = heartChars[Math.floor(Math.random()*heartChars.length)];
+      s.style.left = Math.random()*100 + "vw";
+      s.style.animationDuration = (9 + Math.random()*10) + "s";
+      s.style.animationDelay = (Math.random()*6) + "s";
+      s.style.fontSize = (14 + Math.random()*26) + "px";
+      hearts.appendChild(s);
+    }
+
+    // buttons behavior
+    const result = document.getElementById("result");
+    const modal = document.getElementById("modal");
+
+    document.getElementById("yesBtn").addEventListener("click", () => {
+      result.textContent = config.yesMessage;
+      modal.classList.add("open");
+      burstConfetti();
+    });
+
+    // playful "No" button that runs away
+    const noBtn = document.getElementById("noBtn");
+    const phrases = [
+      "Babe… try again 😇",
+      "Nope 😌 you’re saying yes",
+      "That button’s not working 😅",
+      "Hehe you can’t say no 😜",
+      "Okay but I still like you 💜"
+    ];
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    noBtn.addEventListener("click", () => {
+      result.textContent = phrases[Math.floor(Math.random()*phrases.length)];
+      moveNoButton();
+    });
+
+    function moveNoButton(){
+      const parent = noBtn.parentElement.getBoundingClientRect();
+      const btn = noBtn.getBoundingClientRect();
+      const maxX = parent.width - btn.width;
+      const maxY = 100; // keep it near buttons area
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      noBtn.style.position = "relative";
+      noBtn.style.left = (x - maxX/2) + "px";
+      noBtn.style.top = (y - maxY/2) + "px";
+    }
+
+    document.getElementById("closeBtn").addEventListener("click", () => {
+      modal.classList.remove("open");
+    });
+    modal.addEventListener("click", (e) => {
+      if(e.target === modal) modal.classList.remove("open");
+    });
+
+    // tiny confetti burst (no libraries)
+    function burstConfetti(){
+      const count = 120;
+      for(let i=0;i<count;i++){
+        const p=document.createElement("div");
+        p.style.position="fixed";
+        p.style.left=(Math.random()*100)+"vw";
+        p.style.top="-10px";
+        p.style.width="8px";
+        p.style.height="12px";
+        p.style.borderRadius="3px";
+        p.style.background="hsl(" + (Math.random()*360) + " 90% 60%)";
+        p.style.opacity="0.95";
+        p.style.transform="rotate("+(Math.random()*360)+"deg)";
+        p.style.zIndex="9999";
+        document.body.appendChild(p);
+
+        const fall = 800 + Math.random()*900;
+        const drift = (Math.random()*2-1) * 190;
+
+        p.animate([
+          { transform: p.style.transform, top: "-10px" },
+          { transform: "rotate("+(Math.random()*720)+"deg)", top: fall+"px", left: "calc("+p.style.left+" + "+drift+"px)" }
+        ], { duration: 1400 + Math.random()*900, easing: "cubic-bezier(.2,.8,.2,1)" });
+
+        setTimeout(()=>p.remove(), 2600);
+      }
+    }
+  </script>
+</body>
+</html>
